@@ -77,20 +77,28 @@ async function Configurações(client, interaction) {
 
 async function RoleSetup(client, interaction) {
     try {
+    const adminRole = General.get(`Config.Roles.admin`);
+    const staffRole = General.get(`Config.Roles.staff`);
+    const costumerRole = General.get(`Config.Roles.costumer`);
+    const memberRole = General.get(`Config.Roles.member`);
+
+    const embed = new EmbedBuilder()
+        .setAuthor({ name: `Definir Cargos`, iconURL: client.user.displayAvatarURL({ format: "png", dynamic: true, size: 128 }) })
+        .setDescription(`${timing()} **${interaction.user.username}**\n \n- **Selecione abaixo a opção deseja configurar.** \n
+**Cargo de Administrador:** ${adminRole == null ? `\`Não definido\`` : `<@&${adminRole}>`}
+**Cargo de Suporte:** ${staffRole == null ? `\`Não definido\`` : `<@&${staffRole}>`}
+**Cargo de Cliente:** ${costumerRole == null ? `\`Não definido\`` : `<@&${costumerRole}>`}
+**Cargo de Membro:** ${memberRole == null ? `\`Não definido\`` : `<@&${memberRole}>`}`)
+        .setColor(0xFF6A00)
+        .setTimestamp();
+
+    if (interaction.guild && interaction.guild.iconURL()) {
+        embed.setFooter({ text: `${interaction.guild.name}`, iconURL: interaction.guild.iconURL({ dynamic: true }) });
+    }
+
     await interaction.update({
         content: ``,
-        embeds: [
-            new EmbedBuilder()
-                .setAuthor({ name: `Definir Cargos`, iconURL: client.user.displayAvatarURL({ format: "png", dynamic: true, size: 128 }) })
-                .setDescription(`${timing()} **${interaction.user.username}**\n \n- **Selecione abaixo a opção deseja configurar.** \n
-**Cargo de Administrador:** ${General.get(`Config.Roles.admin`) == null ? `\`Não definido\`` : `<@&${General.get(`Config.Roles.admin`)}>`}
-**Cargo de Suporte:** ${General.get(`Config.Roles.staff`) == null ? `\`Não definido\`` : `<@&${General.get(`Config.Roles.staff`)}>`}
-**Cargo de Cliente:** ${General.get(`Config.Roles.costumer`) == null ? `\`Não definido\`` : `<@&${General.get(`Config.Roles.costumer`)}>`}
-**Cargo de Membro:** ${General.get(`Config.Roles.member`) == null ? `\`Não definido\`` : `<@&${General.get(`Config.Roles.member`)}>`}
-                    `)
-                .setColor(General.get("System.Colors.main"))
-                .setFooter({ text: `${interaction.guild.name}`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
-                .setTimestamp()
+        embeds: [embed],
         ],
         components: [
             new ActionRowBuilder()
