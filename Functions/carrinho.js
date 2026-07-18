@@ -813,6 +813,17 @@ async function approveOrder(client) {
                         }
                     }
 
+                    const dataVariantPartial = await Produtos.get(`Products.${data.id_product}.sub_products.${data.id_variant}`);
+                    if (dataVariantPartial && dataVariantPartial.role && dataVariantPartial.role !== '') {
+                        if (!userbuy.roles.cache.has(dataVariantPartial.role)) {
+                            try {
+                                await userbuy.roles.add(dataVariantPartial.role);
+                            } catch (error) {
+                                console.error(error);
+                            }
+                        }
+                    }
+
                     UpdateStock(data.id_product, client);
                     Console.logging(2, `order "${data.id_order}" concluida com sucesso!`);
                     break;
@@ -970,6 +981,16 @@ async function deliveryOrder(data, userDelivery, Guild, client) {
         if (!userDelivery.roles.cache.has(rolecostumer)) {
             try {
                 await userDelivery.roles.add(rolecostumer);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
+    if (dataVariant.role && dataVariant.role !== '') {
+        if (!userDelivery.roles.cache.has(dataVariant.role)) {
+            try {
+                await userDelivery.roles.add(dataVariant.role);
             } catch (error) {
                 console.error(error);
             }
