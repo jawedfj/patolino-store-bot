@@ -104,27 +104,23 @@ async function RoleSetup(client, interaction) {
                 .addComponents(
                     new ButtonBuilder()
                         .setCustomId('changecargoadmin')
-                        .setLabel('Cargo de Admnistrador')
-                        .setStyle(2)
-                        .setEmoji('1251441849130946572'),
+                        .setLabel('Cargo de Administrador')
+                        .setStyle(2),
                     new ButtonBuilder()
                         .setCustomId('changecargostaff')
                         .setLabel('Cargo de Suporte')
-                        .setStyle(2)
-                        .setEmoji('1241951076434055178'),
+                        .setStyle(2),
                 ),
             new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
                         .setCustomId("changecargoCostumer")
                         .setLabel("Cargo Cliente")
-                        .setStyle(2)
-                        .setEmoji('1276564807335809156'),
+                        .setStyle(2),
                     new ButtonBuilder()
                         .setCustomId("changecargomembro")
                         .setLabel('Cargo de Membros')
                         .setStyle(2)
-                        .setEmoji('1261435261653483611')
                 ),
             new ActionRowBuilder()
                 .addComponents(
