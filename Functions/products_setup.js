@@ -1,4 +1,4 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, StringSelectMenuOptionBuilder, StringSelectMenuBuilder, MessageFlagsBitField } = require("discord.js");
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, StringSelectMenuOptionBuilder, StringSelectMenuBuilder, MessageFlagsBitField, RoleSelectMenuBuilder } = require("discord.js");
 const { General, Produtos } = require("../Database/index");
 const { timing } = require("./utils")
 
@@ -101,10 +101,12 @@ async function VariantSetup(client, interaction, productID, VariantID) {
         currency: 'BRL'
     })
 
+    const roleText = Product.role && Product.role !== '' ? `<@&${Product.role}>` : `\`Não definido\``;
+
     let embed = new EmbedBuilder()
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ format: "png", dynamic: true, size: 128 }) })
         .setTitle(`Titulo da Variante: **${Product.title}**`)
-        .setDescription(`Preço: **${formattedPrice.format(Number(Product.price))}**\n\nVendas realizadas: **${Product.info.vendas}**\nUnidades vendidas: **${Product.info.vendidos}**\nTotal obtido: **${formattedPrice.format(Number(Product.info.total))}**\n\n-# Estoque restante: ${Product.stock.length}`)
+        .setDescription(`Preço: **${formattedPrice.format(Number(Product.price))}**\n\nVendas realizadas: **${Product.info.vendas}**\nUnidades vendidas: **${Product.info.vendidos}**\nTotal obtido: **${formattedPrice.format(Number(Product.info.total))}**\n\nCargo ao Comprar: ${roleText}\n\n-# Estoque restante: ${Product.stock.length}`)
         .setColor(General.get("System.Colors.main"))
         .setFooter({ text: `${interaction.guild.name}`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
         .setTimestamp();
@@ -146,6 +148,20 @@ async function VariantSetup(client, interaction, productID, VariantID) {
                         .setEmoji('1251441411266711573')
                         .setStyle(4),
                 ), row,
+            new ActionRowBuilder()
+                .addComponents(
+                    new RoleSelectMenuBuilder()
+                        .setCustomId(`selectRoleSubProduct_${productID}_${VariantID}`)
+                        .setPlaceholder('Selecione o Cargo ao Comprar')
+                        .setMaxValues(1)
+                ),
+            new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId(`clearRoleSubProduct_${productID}_${VariantID}`)
+                        .setLabel('Limpar Cargo')
+                        .setStyle(4)
+                ),
             new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()

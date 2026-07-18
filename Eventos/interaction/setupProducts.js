@@ -99,6 +99,11 @@ module.exports = {
                     await VariantSetup(client, interaction, productID, VarianteID);
                     break;
                 }
+                case "clearRoleSubProduct": {
+                    await Produtos.set(`Products.${productID}.sub_products.${VarianteID}.role`, '');
+                    await VariantSetup(client, interaction, productID, VarianteID);
+                    break;
+                }
                 case "createProduct": {
 
                     const modal = new ModalBuilder()
@@ -316,16 +321,7 @@ module.exports = {
                             .setPlaceholder('Insira um emoji válido')
                             .setRequired(false)
                     )
-                    const input4 = new ActionRowBuilder().addComponents(
-                        new TextInputBuilder()
-                            .setCustomId('SubProductRole')
-                            .setLabel('Cargo Necessário (Opcional)')
-                            .setStyle(TextInputStyle.Short)
-                            .setPlaceholder('Insira o ID do cargo')
-                            .setRequired(false)
-                    )
-
-                    modal.addComponents(input1, input2, input3, input4)
+                    modal.addComponents(input1, input2, input3)
                     await interaction.showModal(modal);
                     break;
                 }
@@ -733,16 +729,7 @@ module.exports = {
                             .setPlaceholder('Insira um emoji válido')
                             .setRequired(false)
                     )
-                    const input4 = new ActionRowBuilder().addComponents(
-                        new TextInputBuilder()
-                            .setCustomId('EditSubProductRole')
-                            .setLabel('Cargo Necessário (Opcional)')
-                            .setStyle(TextInputStyle.Short)
-                            .setPlaceholder('Insira o ID do cargo')
-                            .setRequired(false)
-                    )
-
-                    modal.addComponents(input1, input2, input3, input4)
+                    modal.addComponents(input1, input2, input3)
                     await interaction.showModal(modal);
                     break;
                 }
@@ -1181,7 +1168,6 @@ module.exports = {
                     const titleVariant = interaction.fields.getTextInputValue('SubProductTitle');
                     let priceVariant = interaction.fields.getTextInputValue('SubProductPrice');
                     const EmojiVariant = interaction.fields.getTextInputValue('SubProductEmoji');
-                    const RoleVariant = interaction.fields.getTextInputValue('SubProductRole');
 
                     priceVariant = priceVariant.replace(/\./g, '').replace(',', '.');
                     if (isNaN(priceVariant)) {
@@ -1211,14 +1197,6 @@ module.exports = {
                         },
                         stock: []
                     };
-
-                    if (RoleVariant) {
-                        const guild = interaction.guild;
-                        const cargo = guild.roles.cache.get(RoleVariant);
-                        if (cargo) {
-                            Struct.role = RoleVariant;
-                        }
-                    }
 
                     await Produtos.set(`Products.${productID}.sub_products.${idSubProduct}`, Struct);
 
@@ -1260,7 +1238,6 @@ module.exports = {
                     const titleVariant = interaction.fields.getTextInputValue('EditSubProductTitle');
                     let priceVariant = interaction.fields.getTextInputValue('EditSubProductPrice');
                     const EmojiVariant = interaction.fields.getTextInputValue('EditSubProductEmoji');
-                    const RoleVariant = interaction.fields.getTextInputValue('EditSubProductRole');
 
                     if (priceVariant) {
                         priceVariant = priceVariant.replace(/\./g, '').replace(',', '.');
@@ -1289,14 +1266,6 @@ module.exports = {
                         },
                         stock: data.stock
                     };
-
-                    if (RoleVariant) {
-                        const guild = interaction.guild;
-                        const cargo = guild.roles.cache.get(RoleVariant);
-                        if (cargo) {
-                            Struct.role = RoleVariant;
-                        }
-                    }
 
                     await Produtos.set(`Products.${productID}.sub_products.${VarianteID}`, Struct);
 
@@ -1622,12 +1591,21 @@ module.exports = {
             }
         }
         if (RoleSelectAction) {
-            const [CustomId, PlanID] = interaction.customId.split('_');
+            const [CustomId, productID, VariantID] = interaction.customId.split('_');
             const value = interaction.values[0];
             switch (CustomId) {
                 case "choseRoleplan": {
-                    await Planos.set(`plans.${PlanID}.role_plan`, value);
-                    await PlanConfig(client, interaction, PlanID);
+                    await Planos.set(`plans.${productID}.role_plan`, value);
+                    await PlanConfig(client, interaction, productID);
+                    break;
+                }
+                case "selectRoleSubProduct": {
+                    const guild = interaction.guild;
+                    const cargo = guild.roles.cache.get(value);
+                    if (cargo) {
+                        await Produtos.set(`Products.${productID}.sub_products.${VariantID}.role`, value);
+                    }
+                    await VariantSetup(client, interaction, productID, VariantID);
                     break;
                 }
             }
