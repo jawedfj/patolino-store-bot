@@ -36,7 +36,7 @@ module.exports = {
                 new EmbedBuilder()
                     .setAuthor({ name: client.user.username, iconURL: "https://cdn.discordapp.com/emojis/1265111276237881454.webp?size=96&quality=lossless" })
                     // Descrição atualizada conforme solicitado
-                    .setDescription(`${timing()}, Sr(a) **${interaction.user.username}**.\n\nSTORMING STORE https://discord.gg/JaGqCfPfKy`)
+                    .setDescription(`${timing()}, Sr(a) **${interaction.user.username}**.`)
                     // Banner adicionado
                     .setImage("https://bot-247--lucasademar1502.replit.app/banner.png")
                     .addFields(

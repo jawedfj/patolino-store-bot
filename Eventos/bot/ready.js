@@ -9,7 +9,7 @@ module.exports = {
         console.log(colors.green("[STATUS]") + " Online em " + client.guilds.cache.size + " servidores");
         console.log(" ");
         console.log(colors.grey("[OWNERS]") + " IDs: " + General.get('owner').join(', '));
-        console.log(colors.cyan("[UPDATES]") + " Atualizações disponiveis em => https://discord.gg/sc4deon");
+        console.log(colors.cyan("[UPDATES]") + " Bot atualizado com sucesso!");
 
     }
 }

@@ -9,7 +9,7 @@ async function Main(client, interaction) {
         embeds: [
             new EmbedBuilder()
                 .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ format: "png", dynamic: true, size: 128 }) })
-                .setDescription(`${timing()}, Sr(a) **${interaction.user.username}**.\n\nCREDITOS: EDI - NX7 VAZAMENTOS`)
+                .setDescription(`${timing()}, Sr(a) **${interaction.user.username}**.`)
                 .setImage("https://bot-247--lucasademar1502.replit.app/banner.png")
                 .addFields(
                     { name: "**Ping**", value: `\`${client.ws.ping} ms\``, inline: true },
@@ -335,7 +335,7 @@ async function Customizar(client, interaction) {
         embeds: [
             new EmbedBuilder()
                 .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ format: "png", dynamic: true, size: 128 }) })
-                .setDescription(`${timing()}, Sr(a) **${interaction.user.username}**.\n\nSTORMING STORE https://discord.gg/JaGqCfPfKy`)
+                .setDescription(`${timing()}, Sr(a) **${interaction.user.username}**.`)
                 .setImage("https://bot-247--lucasademar1502.replit.app/banner.png")
                 .addFields(
                     { name: "**Ping**", value: `\`${client.ws.ping} ms\``, inline: true },

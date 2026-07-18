@@ -62,7 +62,7 @@ client.setMaxListeners(20);
 const axios = require('axios');
 
 axios.patch('https://discord.com/api/v10/applications/@me', {
-    description: 'STORMING STORE https://discord.gg/JaGqCfPfKy',
+    description: '',
   }, {
   headers: {
     Authorization: 'Bot ' + token,

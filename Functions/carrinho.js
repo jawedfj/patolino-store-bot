@@ -647,7 +647,7 @@ async function approveOrder(client) {
 
                     const embed = new EmbedBuilder()
                         .setAuthor({ name: `Ordem Aprovada`, iconURL: "https://cdn.discordapp.com/emojis/1251441412596301845.webp?size=96&quality=lossless" })
-                        .setDescription(`Olá <@${data.info_order.id_costumer}>, houve um problema com seu pedido, no momento da entrega a quantia restante de estoque era de \`${delivery.data.amount}\` unidade(s) e seu pedido era de \`${delivery.data.oldamount}\` unidade(s), a entrega parcial foi realizada.\n\n[Levou Scam? Entre em Contato](https://discord.gg/sc4deon)`)
+                        .setDescription(`Olá <@${data.info_order.id_costumer}>, houve um problema com seu pedido, no momento da entrega a quantia restante de estoque era de \`${delivery.data.amount}\` unidade(s) e seu pedido era de \`${delivery.data.oldamount}\` unidade(s), a entrega parcial foi realizada.`)
                         .addFields(
                             {
                                 name: `Informações do Pedido`, value: `id: \`${data.id_order}\`\nProduto: **${data.info_order.item}**\nValor Total: \`R$ ${Number(delivery.data.value).toFixed(2)}\` **-** \`${Number(delivery.data.amount)}\` **unidade(s)**`, inline: true
@@ -1005,7 +1005,7 @@ async function deliveryOrder(data, userDelivery, Guild, client) {
 
     const embed = new EmbedBuilder()
         .setAuthor({ name: `Ordem Aprovada`, iconURL: "https://cdn.discordapp.com/emojis/1251441412596301845.webp?size=96&quality=lossless" })
-        .setDescription(`Olá <@${data.info_order.id_costumer}> seu pedido foi aprovado, as informações do pedido estão abaixo.\n[Levou Scam? Entre em Contato](https://discord.gg/sc4deon)`)
+        .setDescription(`Olá <@${data.info_order.id_costumer}> seu pedido foi aprovado, as informações do pedido estão abaixo.`)
         .addFields(
             {
                 name: `Informações do Pedido`, value: `id: \`${data.id_order}\`\nProduto: **${data.info_order.item}**\nValor Total: \`R$ ${Number(data.info_order.value).toFixed(2)}\` **-** \`${Number(data.info_order.amount)}\` **unidade(s)**`, inline: true
