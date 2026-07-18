@@ -99,7 +99,6 @@ async function RoleSetup(client, interaction) {
     await interaction.update({
         content: ``,
         embeds: [embed],
-        ],
         components: [
             new ActionRowBuilder()
                 .addComponents(
