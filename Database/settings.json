@@ -1,0 +1,65 @@
+{
+    "owner": ["1526134282471477298", "888820305613717585"],
+    "System": {
+        "type": true,
+        "Colors": {
+            "main": "#FF6A00",
+            "blue": "#FF6A00",
+            "red": "#FF6A00",
+            "green": "#FF6A00",
+            "yellow": "#FF6A00"
+        },
+        "Payments": {
+            "status": true,
+            "mercadopago": {
+                "status": false,
+                "token": ""
+            },
+            "efi": {
+                "status": false
+            },
+            "crypto": {
+                "status": false,
+                "token": ""
+            },
+            "semiauto": {
+                "status": true,
+                "key": ""
+            },
+            "stripe": {
+                "status": true,
+                "token": ""
+            }
+        },
+        "Marca": {
+            "qrcode": {
+                "primary": "#FF6A00",
+                "secondary": "#1A1A1A"
+            },
+            "emojiAuto": "",
+            "msgAuto": ""
+        },
+        "App": {
+            "status": [
+                "Shop",
+                "Melhores Preços"
+            ]
+        }
+    },
+    "Config": {
+        "logs": {
+            "trafego": null,
+            "VendasADM": "1493491868128776292",
+            "VendasPUB": "1501365362506338334",
+            "Sistema": null,
+            "ticketChannel": "1494098795800166490",
+            "feedbacks": "1493491814173511741"
+        },
+        "Roles": {
+            "staff": null,
+            "costumer": null,
+            "member": null,
+            "admin": null
+        }
+    }
+}
