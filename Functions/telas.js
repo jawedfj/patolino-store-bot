@@ -76,8 +76,8 @@ async function Configurações(client, interaction) {
 }
 
 async function RoleSetup(client, interaction) {
-
-    interaction.update({
+    try {
+    await interaction.update({
         content: ``,
         embeds: [
             new EmbedBuilder()
@@ -130,6 +130,12 @@ async function RoleSetup(client, interaction) {
         ],
         flags: MessageFlagsBitField.Flags.Ephemeral
     });
+    } catch (error) {
+        console.error(error);
+        if (!interaction.replied && !interaction.deferred) {
+            await interaction.reply({ content: 'Erro ao carregar cargos.', flags: MessageFlagsBitField.Flags.Ephemeral });
+        }
+    }
 }
 
 async function ChannelSetup(client, interaction) {
