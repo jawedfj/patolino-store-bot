@@ -803,10 +803,10 @@ async function approveOrder(client) {
                     await Produtos.add(`Products.${data.id_product}.sub_products.${data.id_variant}.info.total`, Number(delivery.data.value));
                     Console.logging(1, `"${data.id_order}" | Partial stock - 6/6`);
 
-                    if (rolecostumer !== '') {
+                    if (rolecostumer && rolecostumer !== '') {
                         if (!userbuy.roles.cache.has(rolecostumer)) {
                             try {
-                                userbuy.roles.add(rolecostumer);
+                                await userbuy.roles.add(rolecostumer);
                             } catch (error) {
                                 console.error(error);
                             }
@@ -977,7 +977,7 @@ async function deliveryOrder(data, userDelivery, Guild, client) {
     const idVouches = await General.get('Config.logs.feedbacks');
 
     const channelVouches = await client.channels.cache.get(idVouches);
-    if (rolecostumer !== '') {
+    if (rolecostumer && rolecostumer !== '') {
         if (!userDelivery.roles.cache.has(rolecostumer)) {
             try {
                 await userDelivery.roles.add(rolecostumer);
