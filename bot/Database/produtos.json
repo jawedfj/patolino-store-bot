@@ -190,9 +190,9 @@
             "coupons": [],
             "announce_info": [
                 {
-                    "msgid": "1508711324253687939",
-                    "channelid": "1493491856770859079",
-                    "guildid": "1493486933932773443"
+                    "msgid": "1528178729954709687",
+                    "channelid": "1508723711358930994",
+                    "guildid": "1493465836143247370"
                 }
             ],
             "sub_products": {
@@ -201,7 +201,7 @@
                     "title": "Grafico massinha",
                     "price": "6.90",
                     "emoji": "1297811409132064768",
-                    "role": "",
+                    "role": "1508723632980099133",
                     "coupons": true,
                     "notify": [],
                     "info": {
