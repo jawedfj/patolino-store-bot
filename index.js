@@ -3,11 +3,14 @@ const http = require("http");
 console.clear()
 
 const token = process.env.DISCORD_TOKEN;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 if (!token) {
   console.error("❌ DISCORD_TOKEN não configurado. Adicione o token do bot nas variáveis de ambiente.");
   process.exit(1);
 }
+
+const { loadAllFromGitHub, backupAllToGitHub } = require('./Database/github_sync');
 
 const client = new Client({
 
@@ -49,15 +52,23 @@ module.exports = client;
 
 client.slashCommands = new Collection();
 
-client.login(token);
+async function startBot() {
+  await loadAllFromGitHub();
 
-const evento = require("./handler/Events");
+  const evento = require("./handler/Events");
+  evento.run(client);
+  require("./handler/index")(client);
 
-evento.run(client);
+  client.setMaxListeners(20);
 
-require("./handler/index")(client);
+  client.login(token);
 
-client.setMaxListeners(20);
+  setInterval(async () => {
+    await backupAllToGitHub();
+  }, 2 * 60 * 1000);
+}
+
+startBot();
 
 const axios = require('axios');
 
