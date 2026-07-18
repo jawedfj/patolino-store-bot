@@ -140,9 +140,13 @@ async function RoleSetup(client, interaction) {
     });
     } catch (error) {
         console.error(error);
-        if (!interaction.replied && !interaction.deferred) {
-            await interaction.reply({ content: 'Erro ao carregar cargos.', flags: MessageFlagsBitField.Flags.Ephemeral });
-        }
+        try {
+            if (interaction.deferred || interaction.replied) {
+                await interaction.editReply({ content: `Erro: ${error.message}` });
+            } else {
+                await interaction.reply({ content: `Erro: ${error.message}`, flags: MessageFlagsBitField.Flags.Ephemeral });
+            }
+        } catch(e) {}
     }
 }
 
