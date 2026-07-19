@@ -27,12 +27,12 @@
     "Suporte": {
         "idpainel": "Suporte",
         "tipo": "select",
-        "desc": "Clique na seleção abaixo para abrir ticket e obter ajuda de um **STAFF**",
+        "desc": "🔔 | Olá {user}! **Seja bem-vindo(a) ao seu ticket.**\n\n⚡ | Os **TICKETS** são totalmente privados, apenas membros da STAFF possuem acesso a este canal.\n\n🚨 | Evite **MARCAÇÕES.** Aguarde até que um **STAFF** te atenda.\n\n👮‍♂️ | Staff que assumiu o ticket {assumido}\n📩 | Motivo do Ticket: __**{motivo}**__\n\n⏰ | Horário de abertura: {horario1} ({horario2})",
         "title": "patolino cheats | #200 💛  | Atendimento",
         "placeholder": "Selecione uma opção...",
         "select": [
             {
-                "text": "Abrir Ticket",
+                "text": "Suporte Geral",
                 "desc": "Clique aqui para abrir",
                 "emoji": "⚡",
                 "categoria": "",
