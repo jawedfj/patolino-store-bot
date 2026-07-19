@@ -27,7 +27,7 @@
             },
             "semiauto": {
                 "status": true,
-                "key": ""
+                "key": "moller150210@gmail.com"
             },
             "stripe": {
                 "status": false,
@@ -52,10 +52,10 @@
     "Config": {
         "logs": {
             "trafego": null,
-            "VendasADM": "1493491868128776292",
-            "VendasPUB": "1501365362506338334",
-            "Sistema": null,
-            "ticketChannel": "1494098795800166490",
+            "VendasADM": "1508723839540924496",
+            "VendasPUB": "1508723697366728796",
+            "Sistema": "1508723839540924496",
+            "ticketChannel": "1508723788328734791",
             "feedbacks": "1508723681692614719"
         },
         "Roles": {
