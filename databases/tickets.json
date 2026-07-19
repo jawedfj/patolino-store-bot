@@ -1,0 +1,54 @@
+{
+    "teste": {
+        "idpainel": "teste",
+        "tipo": "button",
+        "desc": "Clique no botão de abrir ticket para obter ajuda de um **STAFF**",
+        "title": "Video | Suporte",
+        "idmsg": "1506392806900633700",
+        "idcanal": "1503176047745699940",
+        "modal": {
+            "assunto": "ON",
+            "desc": "OFF",
+            "finaliza": "ON"
+        },
+        "buttons": [
+            {
+                "id": 1,
+                "style": 1,
+                "text": "Abrir Ticket",
+                "emoji": "🎫",
+                "msg": {
+                    "mensagem": "",
+                    "sistema": "ON"
+                }
+            }
+        ]
+    },
+    "Suporte": {
+        "idpainel": "Suporte",
+        "tipo": "select",
+        "desc": "Clique na seleção abaixo para abrir ticket e obter ajuda de um **STAFF**",
+        "title": "West Vazamentos | #200 🤍 | Atendimento",
+        "placeholder": "Selecione uma opção...",
+        "select": [
+            {
+                "text": "Abrir Ticket",
+                "desc": "Clique aqui para abrir",
+                "emoji": "⚡",
+                "categoria": "",
+                "id": 1,
+                "msg": {
+                    "mensagem": "",
+                    "sistema": "ON"
+                }
+            }
+        ],
+        "idmsg": "1506393534025175292",
+        "idcanal": "1503176047745699940",
+        "modal": {
+            "assunto": "ON",
+            "desc": "OFF",
+            "finaliza": "ON"
+        }
+    }
+}

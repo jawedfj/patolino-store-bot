@@ -1,28 +1,31 @@
 {
-  "name": "bot-de-vendas",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "axios": "^1.7.9",
-    "canvas": "^3.1.0",
-    "chartjs-node-canvas": "^5.0.0",
-    "colors": "^1.4.0",
-    "discord.js": "^14.16.3",
-    "mercadopago": "^2.3.0",
-    "moment-timezone": "^0.5.47",
-    "nodemailer": "^6.10.0",
-    "qr-code-styling-node": "^1.5.0",
-    "qr-image": "^3.2.0",
-    "qrcode-pix": "^5.0.0",
-    "sharp": "^0.33.5",
-    "stripe": "^17.7.0",
-    "wio.db": "^4.0.22"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "name": "patolino-store-bot",
+    "main": "index.js",
+    "author": "patolino",
+    "license": "ISC",
+    "scripts": {
+        "start": "node index.js",
+        "check": "node --check index.js"
+    },
+    "dependencies": {
+        "@discordjs/builders": "^1.10.0",
+        "@discordjs/rest": "^2.4.0",
+        "@discordjs/voice": "^0.16.1",
+        "axios": "^1.7.9",
+        "body-parser": "^1.20.3",
+        "colors": "^1.4.0",
+        "discord-api-types": "^0.37.97",
+        "discord-html-transcripts": "^3.2.0",
+        "discord.js": "^14.16.3",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "imap": "^0.8.19",
+        "mercadopago": "^2.0.4",
+        "moment": "^2.29.4",
+        "qrcode": "^1.5.4",
+        "sequelize": "^6.37.5",
+        "sqlite3": "^5.1.7",
+        "stripe": "^17.7.0",
+        "wio.db": "^4.0.22"
+    }
 }
