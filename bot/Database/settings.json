@@ -1,0 +1,68 @@
+{
+    "owner": [
+        "1526134282471477298",
+        "888820305613717585"
+    ],
+    "System": {
+        "type": true,
+        "Colors": {
+            "main": "#FF6A00",
+            "blue": "#FF6A00",
+            "red": "#FF6A00",
+            "green": "#FF6A00",
+            "yellow": "#FF6A00"
+        },
+        "Payments": {
+            "status": true,
+            "mercadopago": {
+                "status": false,
+                "token": ""
+            },
+            "efi": {
+                "status": false
+            },
+            "crypto": {
+                "status": false,
+                "token": ""
+            },
+            "semiauto": {
+                "status": true,
+                "key": "moller150210@gmail.com"
+            },
+            "stripe": {
+                "status": false,
+                "token": ""
+            }
+        },
+        "Marca": {
+            "qrcode": {
+                "primary": "#FF6A00",
+                "secondary": "#1A1A1A"
+            },
+            "emojiAuto": "",
+            "msgAuto": ""
+        },
+        "App": {
+            "status": [
+                "Shop",
+                "Melhores Preços"
+            ]
+        }
+    },
+    "Config": {
+        "logs": {
+            "trafego": null,
+            "VendasADM": "1508723839540924496",
+            "VendasPUB": "1508723697366728796",
+            "Sistema": "1508723839540924496",
+            "ticketChannel": "1508723788328734791",
+            "feedbacks": "1508723681692614719"
+        },
+        "Roles": {
+            "staff": "1508723468298879097",
+            "costumer": "1508723475081203753",
+            "member": null,
+            "admin": "1508723434555707502"
+        }
+    }
+}
