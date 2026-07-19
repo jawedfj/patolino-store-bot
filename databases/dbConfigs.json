@@ -58,16 +58,16 @@
             "certo": "✅",
             "errado": "❌",
             "sistema": "ON",
-            "channel": "1384597014133735529"
+            "channel": "1508723681692614719"
         },
         "ticket": {
             "cargo_staff": [
                 "1384605888802979840",
                 "1506044081078272020"
             ],
-            "canal_logs": "1504607892664487998",
-            "canal_avalia": "1504607892664487998",
-            "categoria": "1503174404253945876"
+            "canal_logs": "1508723788328734791",
+            "canal_avalia": "1508723681692614719",
+            "categoria": "1508723778555875359"
         },
         "painel": {
             "desc": ":bell: | Olá {user}! **Seja bem-vindo(a) ao seu ticket.**\n\n:zap: | Os **TICKETS** são totalmente privados, apenas membros da STAFF possuem acesso a este canal.\n\n:rotating_light: | Evite **MARCAÇÕES.** Aguarde até que um **STAFF** te atenda.\n\n:man_police_officer: | Staff que assumiu o ticket {assumido}\n:envelope_with_arrow: | Motivo do Ticket: __**{motivo}**__\n\n⏰ | Horário de abertura: {horario1} ({horario2})",
