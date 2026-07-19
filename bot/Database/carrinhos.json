@@ -312,5 +312,43 @@
             ],
             "delivery": true
         }
+    },
+    "1526134282471477298": {
+        "AiUx2U6359D4790M": {
+            "status": "approved",
+            "id_order": "AiUx2U6359D4790M",
+            "id_product": "5061ZJc0Bo5SQPLt",
+            "id_variant": "C35FT3dPlbia6T6x",
+            "info_order": {
+                "id_costumer": "1526134282471477298",
+                "item": "Grafico massinha",
+                "amount": 1,
+                "value": "6.90",
+                "creation_date": "2026-07-19T03:07:03.690Z",
+                "expiration_date": "2026-07-19T03:17:09.974Z",
+                "products_delivery": [
+                    "https://www.mediafire.com/file/4ndioap7wh02oia/grafico_de_massinha_Patolino_store.zip/file"
+                ],
+                "cupom": []
+            },
+            "payment_info": [
+                {
+                    "method": "semiauto",
+                    "total": "6.90",
+                    "copypaste": "00020126220014BR.GOV.BCB.PIX010052040000530398654046.905802BR5908SEU NOME6008BRASILIA61082836000062070503***63041C74",
+                    "creation_date": "2026-07-19T03:07:09.974Z",
+                    "approvation_date": "2026-07-19T03:07:17.130Z",
+                    "proof": false
+                }
+            ],
+            "hook": [
+                {
+                    "msgid": "1528236705402847284",
+                    "channelid": "1528236704123846738",
+                    "guildid": "1493465836143247370"
+                }
+            ],
+            "delivery": true
+        }
     }
 }
