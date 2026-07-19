@@ -148,102 +148,127 @@ module.exports = {
                     break;
                 }
                 case "manageProduct": {
-                    await interaction.deferUpdate().catch(() => {});
-                    const Products = await Produtos.get(`Products`) || {};
-
-                    if (Object.keys(Products).length === 0) {
-                        return interaction.editReply({ content: `Não existem produtos para configurar.`, components: [], embeds: [] });
+                    try {
+                        await interaction.deferReply({ ephemeral: true });
+                    } catch (e) {
+                        console.error('[manageProduct] deferReply falhou:', e.message);
+                        return;
                     }
 
-                    if (Object.keys(Products).length === 1) {
-                        return await ProductSetup(client, interaction, Object.keys(Products)[0]);
-                    }
+                    try {
+                        const Products = await Produtos.get(`Products`) || {};
 
-                    const productEntries = Object.values(Products);
-                    const menus = [];
+                        if (Object.keys(Products).length === 0) {
+                            return interaction.editReply({ content: `Não existem produtos para configurar.`, components: [], embeds: [] });
+                        }
 
-                    for (let i = 0; i < productEntries.length; i += 25) {
-                        const productBatch = productEntries.slice(i, i + 25);
-                        const selectMenu = new StringSelectMenuBuilder()
-                            .setCustomId(`manageProductSelect_${i / 25}`)
-                            .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
-                            .setMaxValues(1);
+                        if (Object.keys(Products).length === 1) {
+                            return await ProductSetup(client, interaction, Object.keys(Products)[0]);
+                        }
 
-                        productBatch.forEach(prod => {
+                        const productEntries = Object.values(Products);
+                        const menus = [];
 
-                            selectMenu.addOptions({
-                                label: prod.title?.substring(0, 100) || "Sem título",
-                                description: `Variantes: ${Object.keys(prod.sub_products).length}` || "Sem descrição",
-                                value: prod.id_product.toString(),
-                                emoji: '1342771110625808465'
+                        for (let i = 0; i < productEntries.length; i += 25) {
+                            const productBatch = productEntries.slice(i, i + 25);
+                            const selectMenu = new StringSelectMenuBuilder()
+                                .setCustomId(`manageProductSelect_${i / 25}`)
+                                .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
+                                .setMaxValues(1);
+
+                            productBatch.forEach(prod => {
+
+                                selectMenu.addOptions({
+                                    label: prod.title?.substring(0, 100) || "Sem título",
+                                    description: `Variantes: ${Object.keys(prod.sub_products).length}` || "Sem descrição",
+                                    value: prod.id_product.toString(),
+                                    emoji: '1342771110625808465'
+                                });
                             });
+
+                            menus.push(new ActionRowBuilder().addComponents(selectMenu));
+                        }
+
+                        const button = new ButtonBuilder()
+                            .setCustomId(`voltarLojaSetup`)
+                            .setLabel(`Voltar`)
+                            .setEmoji(`1251441490576805979`)
+                            .setStyle(2);
+
+                        const rowButton = new ActionRowBuilder().addComponents(button);
+
+                        await interaction.editReply({
+                            content: `${interaction.user}, selecione um **produto** para editar.`,
+                            embeds: [],
+                            components: [...menus, rowButton]
                         });
-
-                        menus.push(new ActionRowBuilder().addComponents(selectMenu));
+                    } catch (e) {
+                        console.error('[manageProduct] Erro:', e.message);
+                        try {
+                            await interaction.editReply({ content: `Ocorreu um erro ao carregar os produtos. Tente novamente.`, components: [], embeds: [] });
+                        } catch {}
                     }
-
-                    const button = new ButtonBuilder()
-                        .setCustomId(`voltarLojaSetup`)
-                        .setLabel(`Voltar`)
-                        .setEmoji(`1251441490576805979`)
-                        .setStyle(2);
-
-                    const rowButton = new ActionRowBuilder().addComponents(button);
-
-                    await interaction.editReply({
-                        content: `${interaction.user}, selecione um **produto** para editar.`,
-                        embeds: [],
-                        components: [...menus, rowButton]
-                    });
 
                     break;
                 }
                 case "deleteProduct": {
-
-                    await interaction.deferUpdate().catch(() => {});
-                    const Products = await Produtos.get(`Products`) || {};
-
-                    if (Object.keys(Products).length === 0) {
-                        return interaction.editReply({ content: `Não existem produtos para deletar.`, components: [], embeds: [] });
+                    try {
+                        await interaction.deferReply({ ephemeral: true });
+                    } catch (e) {
+                        console.error('[deleteProduct] deferReply falhou:', e.message);
+                        return;
                     }
 
-                    const productEntries = Object.values(Products);
-                    const menus = [];
+                    try {
+                        const Products = await Produtos.get(`Products`) || {};
 
-                    for (let i = 0; i < productEntries.length; i += 25) {
-                        const productBatch = productEntries.slice(i, i + 25);
-                        const selectMenu = new StringSelectMenuBuilder()
-                            .setCustomId(`deleteProductSelect`)
-                            .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
-                            .setMaxValues(productBatch.length);
+                        if (Object.keys(Products).length === 0) {
+                            return interaction.editReply({ content: `Não existem produtos para deletar.`, components: [], embeds: [] });
+                        }
 
-                        productBatch.forEach(prod => {
+                        const productEntries = Object.values(Products);
+                        const menus = [];
 
-                            selectMenu.addOptions({
-                                label: prod.title?.substring(0, 100) || "Sem título",
-                                description: `Variantes: ${Object.keys(prod.sub_products).length}` || "Sem descrição",
-                                value: prod.id_product.toString(),
-                                emoji: '1344203167700750418'
+                        for (let i = 0; i < productEntries.length; i += 25) {
+                            const productBatch = productEntries.slice(i, i + 25);
+                            const selectMenu = new StringSelectMenuBuilder()
+                                .setCustomId(`deleteProductSelect`)
+                                .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
+                                .setMaxValues(productBatch.length);
+
+                            productBatch.forEach(prod => {
+
+                                selectMenu.addOptions({
+                                    label: prod.title?.substring(0, 100) || "Sem título",
+                                    description: `Variantes: ${Object.keys(prod.sub_products).length}` || "Sem descrição",
+                                    value: prod.id_product.toString(),
+                                    emoji: '1344203167700750418'
+                                });
+
                             });
 
+                            menus.push(new ActionRowBuilder().addComponents(selectMenu));
+                        }
+
+                        const button = new ButtonBuilder()
+                            .setCustomId(`voltarLojaSetup`)
+                            .setLabel(`Voltar`)
+                            .setEmoji(`1251441490576805979`)
+                            .setStyle(2);
+
+                        const rowButton = new ActionRowBuilder().addComponents(button);
+
+                        await interaction.editReply({
+                            content: `${interaction.user}, selecione o produto para deletar.`,
+                            embeds: [],
+                            components: [...menus, rowButton]
                         });
-
-                        menus.push(new ActionRowBuilder().addComponents(selectMenu));
+                    } catch (e) {
+                        console.error('[deleteProduct] Erro:', e.message);
+                        try {
+                            await interaction.editReply({ content: `Ocorreu um erro ao carregar os produtos. Tente novamente.`, components: [], embeds: [] });
+                        } catch {}
                     }
-
-                    const button = new ButtonBuilder()
-                        .setCustomId(`voltarLojaSetup`)
-                        .setLabel(`Voltar`)
-                        .setEmoji(`1251441490576805979`)
-                        .setStyle(2);
-
-                    const rowButton = new ActionRowBuilder().addComponents(button);
-
-                    await interaction.editReply({
-                        content: `${interaction.user}, selecione o produto para deletar.`,
-                        embeds: [],
-                        components: [...menus, rowButton]
-                    });
 
                     break;
                 }
@@ -328,58 +353,71 @@ module.exports = {
                     break;
                 }
                 case "manageSubproduct": {
-                    await interaction.deferUpdate().catch(() => {});
-                    const Products = await Produtos.get(`Products.${productID}.sub_products`) || {};
-
-                    if (Object.keys(Products).length === 0) {
-                        return interaction.editReply({ content: `Não existem variantes para configurar.`, components: [], embeds: [] });
+                    try {
+                        await interaction.deferReply({ ephemeral: true });
+                    } catch (e) {
+                        console.error('[manageSubproduct] deferReply falhou:', e.message);
+                        return;
                     }
 
-                    if (Object.keys(Products).length === 1) {
-                        return await VariantSetup(client, interaction, productID, Object.keys(Products)[0]);
-                    }
+                    try {
+                        const Products = await Produtos.get(`Products.${productID}.sub_products`) || {};
 
-                    const productEntries = Object.values(Products);
-                    const menus = [];
+                        if (Object.keys(Products).length === 0) {
+                            return interaction.editReply({ content: `Não existem variantes para configurar.`, components: [], embeds: [] });
+                        }
 
-                    const formattedPrice = new Intl.NumberFormat('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL'
-                    })
+                        if (Object.keys(Products).length === 1) {
+                            return await VariantSetup(client, interaction, productID, Object.keys(Products)[0]);
+                        }
 
-                    for (let i = 0; i < productEntries.length; i += 25) {
-                        const productBatch = productEntries.slice(i, i + 25);
-                        const selectMenu = new StringSelectMenuBuilder()
-                            .setCustomId(`manageSubProductSelect_${productID}_${i / 25}`)
-                            .setPlaceholder(`Selecione uma Variante [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
-                            .setMaxValues(1);
+                        const productEntries = Object.values(Products);
+                        const menus = [];
 
-                        productBatch.forEach(prod => {
+                        const formattedPrice = new Intl.NumberFormat('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        })
 
-                            selectMenu.addOptions({
-                                label: prod.title?.substring(0, 100) || "Sem título",
-                                description: `Valor: ${formattedPrice.format(Number(prod.price))} | Estoque: ${prod.stock.length}`,
-                                value: prod.id.toString(),
-                                emoji: '1342771110625808465'
+                        for (let i = 0; i < productEntries.length; i += 25) {
+                            const productBatch = productEntries.slice(i, i + 25);
+                            const selectMenu = new StringSelectMenuBuilder()
+                                .setCustomId(`manageSubProductSelect_${productID}_${i / 25}`)
+                                .setPlaceholder(`Selecione uma Variante [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
+                                .setMaxValues(1);
+
+                            productBatch.forEach(prod => {
+
+                                selectMenu.addOptions({
+                                    label: prod.title?.substring(0, 100) || "Sem título",
+                                    description: `Valor: ${formattedPrice.format(Number(prod.price))} | Estoque: ${prod.stock.length}`,
+                                    value: prod.id.toString(),
+                                    emoji: '1342771110625808465'
+                                });
                             });
+
+                            menus.push(new ActionRowBuilder().addComponents(selectMenu));
+                        }
+
+                        const button = new ButtonBuilder()
+                            .setCustomId(`voltarProductSetup_${productID}`)
+                            .setLabel(`Voltar`)
+                            .setEmoji(`1251441490576805979`)
+                            .setStyle(2);
+
+                        const rowButton = new ActionRowBuilder().addComponents(button);
+
+                        await interaction.editReply({
+                            content: `${interaction.user}, selecione uma **variante** para editar.`,
+                            embeds: [],
+                            components: [...menus, rowButton]
                         });
-
-                        menus.push(new ActionRowBuilder().addComponents(selectMenu));
+                    } catch (e) {
+                        console.error('[manageSubproduct] Erro:', e.message);
+                        try {
+                            await interaction.editReply({ content: `Ocorreu um erro ao carregar as variantes. Tente novamente.`, components: [], embeds: [] });
+                        } catch {}
                     }
-
-                    const button = new ButtonBuilder()
-                        .setCustomId(`voltarProductSetup_${productID}`)
-                        .setLabel(`Voltar`)
-                        .setEmoji(`1251441490576805979`)
-                        .setStyle(2);
-
-                    const rowButton = new ActionRowBuilder().addComponents(button);
-
-                    await interaction.editReply({
-                        content: `${interaction.user}, selecione uma **variante** para editar.`,
-                        embeds: [],
-                        components: [...menus, rowButton]
-                    });
 
                     break;
                 }
