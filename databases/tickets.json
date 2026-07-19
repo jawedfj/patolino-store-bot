@@ -33,14 +33,16 @@
         "select": [
             {
                 "text": "Suporte Geral",
-                "desc": "Clique aqui para abrir",
+                "desc": "ON",
                 "emoji": "⚡",
                 "categoria": "",
                 "id": 1,
                 "msg": {
-                    "mensagem": "",
+                    "mensagem": "Mensagem do Painel Atual\n:bell: | Olá {user}! Seja bem-vindo(a) ao seu ticket.\n\n:zap: | Os TICKETS são totalmente privados, apenas membros da STAFF possuem acesso a este canal.\n\n:rotating_light: | Evite MARCAÇÕES. Aguarde até que um STAFF te atenda.\n\n:man_police_officer: | Staff que assumiu o ticket {assumido}\n:envelope_with_arrow: | Motivo do Ticket: {motivo}\n\n⏰ | Horário de abertura: {horario1} ({horario2})",
                     "sistema": "ON"
-                }
+                },
+                "assunto": "ON",
+                "finaliza": "ON"
             },
             {
                 "text": "Abrir Ticket",
