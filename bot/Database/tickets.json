@@ -118,6 +118,26 @@
                     }
                 ],
                 "closed_date": "2026-05-26T06:15:56.835Z"
+            },
+            "53tejsc44FfR3saU": {
+                "status": "closed",
+                "id_ticket": "53tejsc44FfR3saU",
+                "id_function": "3703961388397418",
+                "info": {
+                    "id_user": "888820305613717585",
+                    "id_staff": "",
+                    "opened_date": "2026-07-19T03:22:47.987Z",
+                    "closed_date": "",
+                    "transcriptUrl": ""
+                },
+                "hook": [
+                    {
+                        "msgid": "1528240666398953558",
+                        "channelid": "1528240664876154940",
+                        "guildid": "1493465836143247370"
+                    }
+                ],
+                "closed_date": "2026-07-19T03:22:58.340Z"
             }
         }
     }
