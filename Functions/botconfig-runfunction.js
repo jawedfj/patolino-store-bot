@@ -63,7 +63,8 @@ async function customEmoji(client, interaction, name, fallback) {
 
 async function StartAll(client, interaction) {
     const banner = new EmbedBuilder()
-        .setColor(dbConfigs.get("color") || "#2B2D31");
+        .setColor(dbConfigs.get("color") || "#2B2D31")
+        .setDescription("Selecione uma das opções abaixo para configurar o seu bot!");
 
     const components = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
