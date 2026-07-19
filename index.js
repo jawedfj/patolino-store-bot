@@ -9,8 +9,8 @@ const dbPerms = new JsonDatabase({ databasePath: "./databases/dbPermissions.json
 const dbDataTickets = new JsonDatabase({ databasePath: "./databases/data_ticket.json" })
 const dbConfigs = new JsonDatabase({ databasePath: "./databases/dbConfigs.json" });
 
-const CREDIT_NAME = "West Vazamentos";
-const CREDIT_URL = "https://discord.gg/2rcNU6GfJA";
+const CREDIT_NAME = "";
+const CREDIT_URL = "";
 
 const client = new Client({
     intents: [
@@ -103,7 +103,7 @@ client.once('ready', async () => {
         try {
             client.user.setPresence({
                 activities: [{
-                    name: `Creditos: ${CREDIT_NAME}`,
+                    name: `Patolino Store`,
                     type: ActivityType.Custom
                 }],
                 status: 'online',
@@ -121,8 +121,7 @@ client.once('ready', async () => {
     const updateBotDescription = async () => {
         // Descrição formatada do bot
         const description = [
-            `**${CREDIT_NAME}**`,
-            CREDIT_URL
+            `**Patolino Store**`,
         ].join('\n');
 
         // Dados para atualização
