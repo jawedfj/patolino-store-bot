@@ -277,25 +277,6 @@
                     ]
                 }
             }
-        },
-        "x3Oo1dBd1k0s59v0": {
-            "sub_products": {
-                "Z7f1cooS85o3D1EY": {
-                    "id": "Z7f1cooS85o3D1EY",
-                    "title": "1 Dia",
-                    "price": "2.00",
-                    "emoji": "1297811409132064768",
-                    "role": "1508723612633403463",
-                    "coupons": true,
-                    "notify": [],
-                    "info": {
-                        "vendas": 0,
-                        "vendidos": 0,
-                        "total": 0
-                    },
-                    "stock": []
-                }
-            }
         }
     }
 }
