@@ -33,7 +33,7 @@ async function ProductSetup(client, interaction, productID) {
     const row = new ActionRowBuilder().addComponents(selectMenu);
 
     const respond = (interaction.deferred || interaction.replied)
-        ? (data) => interaction.editReply(data)
+        ? (data) => { delete data.flags; return interaction.editReply(data); }
         : (data) => interaction.update(data);
 
     respond({
@@ -93,7 +93,6 @@ async function ProductSetup(client, interaction, productID) {
                         .setEmoji('1251441490576805979')
                 ),
         ],
-        flags: MessageFlagsBitField.Flags.Ephemeral
     });
 }
 
@@ -131,7 +130,7 @@ async function VariantSetup(client, interaction, productID, VariantID) {
     const row = new ActionRowBuilder().addComponents(selectMenu);
 
     const respond = (interaction.deferred || interaction.replied)
-        ? (data) => interaction.editReply(data)
+        ? (data) => { delete data.flags; return interaction.editReply(data); }
         : (data) => interaction.update(data);
 
     respond({
