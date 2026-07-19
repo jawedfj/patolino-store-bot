@@ -1,6 +1,13 @@
 const axios = require("axios")
 require("./Functions/safe-components");
 const config = require("./config")
+
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => res.send("Bot online."));
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`[HTTP] Servidor web rodando na porta ${process.env.PORT || 3000}`);
+});
 const { Client, GatewayIntentBits, Collection, ActivityType } = require("discord.js");
 const { readdirSync } = require("node:fs")
 const { JsonDatabase } = require("wio.db");

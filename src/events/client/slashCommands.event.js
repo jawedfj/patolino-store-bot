@@ -17,8 +17,14 @@ module.exports = {
                 return;
             }
 
-
-            await command.execute(interaction, client);
+            try {
+                await command.execute(interaction, client);
+            } catch (err) {
+                console.error(`Erro ao executar comando /${interaction.commandName}:`, err.message);
+                if (!interaction.replied && !interaction.deferred) {
+                    interaction.reply({ content: "❌ | Ocorreu um erro ao executar este comando.", flags: MessageFlags.Ephemeral }).catch(() => {});
+                }
+            }
 
         }
 
