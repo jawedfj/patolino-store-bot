@@ -32,11 +32,7 @@ async function ProductSetup(client, interaction, productID) {
 
     const row = new ActionRowBuilder().addComponents(selectMenu);
 
-    const respond = (interaction.deferred || interaction.replied)
-        ? (data) => { delete data.flags; return interaction.editReply(data); }
-        : (data) => interaction.update(data);
-
-    respond({
+    interaction.update({
         content: ``,
         embeds: [embed],
         components: [
@@ -129,11 +125,7 @@ async function VariantSetup(client, interaction, productID, VariantID) {
 
     const row = new ActionRowBuilder().addComponents(selectMenu);
 
-    const respond = (interaction.deferred || interaction.replied)
-        ? (data) => { delete data.flags; return interaction.editReply(data); }
-        : (data) => interaction.update(data);
-
-    respond({
+    interaction.update({
         content: ``,
         embeds: [embed],
         components: [
