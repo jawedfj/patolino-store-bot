@@ -118,8 +118,9 @@
     "suporte-definitivo": {
         "idpainel": "suporte-definitivo",
         "tipo": "select",
-        "desc": "Clique na seleção abaixo para abrir ticket e obter ajuda de um **STAFF**",
+        "desc": "Para iniciar um atendimento, clique no botão abaixo e descreva seu problema com o máximo de detalhes possível.\nNossa equipe responderá em breve.",
         "title": "PATOLINO CHEATS | Atendimento",
+        "banner": "https://media.discordapp.net/attachments/1501343989180141568/1501344071334232094/1_74b6f01a-2ca4-4c0f-ab5f-ac2c354f8c66.png?ex=6a5df2e0&is=6a5ca160&hm=dcf8d4283ee943e6c7321c0209e49ee5ef36b4bab06380ab45bd764215e715cb&=&format=webp&quality=lossless&width=1214&height=523",
         "placeholder": "Selecione uma opção...",
         "select": [
             {
