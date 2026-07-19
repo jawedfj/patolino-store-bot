@@ -114,5 +114,32 @@
             "desc": "OFF",
             "finaliza": "ON"
         }
+    },
+    "suporte-definitivo": {
+        "idpainel": "suporte-definitivo",
+        "tipo": "select",
+        "desc": "Clique na seleção abaixo para abrir ticket e obter ajuda de um **STAFF**",
+        "title": "PATOLINO CHEATS | Atendimento",
+        "placeholder": "Selecione uma opção...",
+        "select": [
+            {
+                "text": "Abrir Ticket",
+                "desc": "Clique aqui para abrir",
+                "emoji": "⚡",
+                "categoria": "",
+                "id": 1,
+                "msg": {
+                    "mensagem": "",
+                    "sistema": "ON"
+                }
+            }
+        ],
+        "idmsg": "1528537708555800778",
+        "idcanal": "1508723839540924496",
+        "modal": {
+            "assunto": "ON",
+            "desc": "OFF",
+            "finaliza": "ON"
+        }
     }
 }
