@@ -15,7 +15,7 @@
             "thumbUrl": "none"
         },
         "embeds": {
-            "color": "#2B2D31"
+            "color": "#FFA500"
         },
         "payments": {
             "mpAcessToken": "none",
@@ -79,7 +79,7 @@
                 "finalizar": "<:1166960963988230195:1239447625737048154>"
             }
         },
-        "color": "#460580"
+        "color": "#FFA500"
     },
     "dbRedefine": true,
     "acoesautomaticas": {
