@@ -30,17 +30,19 @@ module.exports = {
             await StartAll(client, interaction);
 
         } catch (error) {
-            console.error("Erro no comando /botconfig:", error);
-            if (interaction.deferred || interaction.replied) {
-                await interaction.editReply({
-                    content: `❌ | Ocorreu um erro ao executar o comando.`
-                });
-            } else {
-                await interaction.reply({
-                    content: `❌ | Ocorreu um erro ao executar o comando.`,
-                    flags: MessageFlags.Ephemeral
-                });
-            }
+            console.error("Erro no comando /botconfig:", error.message || error);
+            try {
+                if (interaction.deferred || interaction.replied) {
+                    await interaction.editReply({
+                        content: `❌ | Ocorreu um erro ao executar o comando.`
+                    }).catch(() => {});
+                } else {
+                    await interaction.reply({
+                        content: `❌ | Ocorreu um erro ao executar o comando.`,
+                        flags: MessageFlags.Ephemeral
+                    }).catch(() => {});
+                }
+            } catch (_) {}
         }
     }
 };

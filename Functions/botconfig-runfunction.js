@@ -62,10 +62,8 @@ async function customEmoji(client, interaction, name, fallback) {
 }
 
 async function StartAll(client, interaction) {
-    const image = "";
     const banner = new EmbedBuilder()
-        .setColor(dbConfigs.get("color") || "#2B2D31")
-        .setImage(image);
+        .setColor(dbConfigs.get("color") || "#2B2D31");
 
     const components = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
