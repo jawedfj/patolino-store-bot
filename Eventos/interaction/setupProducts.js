@@ -158,6 +158,8 @@ module.exports = {
                         return await ProductSetup(client, interaction, Object.keys(Products)[0]);
                     }
 
+                    await interaction.deferUpdate().catch(() => {});
+
                     const productEntries = Object.values(Products);
                     const menus = [];
 
@@ -189,7 +191,7 @@ module.exports = {
 
                     const rowButton = new ActionRowBuilder().addComponents(button);
 
-                    await interaction.update({
+                    await interaction.editReply({
                         content: `${interaction.user}, selecione um **produto** para editar.`,
                         embeds: [],
                         components: [...menus, rowButton]
@@ -204,6 +206,8 @@ module.exports = {
                     if (Object.keys(Products).length === 0) {
                         return interaction.reply({ content: `Não existem produtos para deletar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
                     }
+
+                    await interaction.deferUpdate().catch(() => {});
 
                     const productEntries = Object.values(Products);
                     const menus = [];
@@ -237,7 +241,7 @@ module.exports = {
 
                     const rowButton = new ActionRowBuilder().addComponents(button);
 
-                    await interaction.update({
+                    await interaction.editReply({
                         content: `${interaction.user}, selecione o produto para deletar.`,
                         embeds: [],
                         components: [...menus, rowButton]
@@ -336,6 +340,8 @@ module.exports = {
                         return await VariantSetup(client, interaction, productID, Object.keys(Products)[0]);
                     }
 
+                    await interaction.deferUpdate().catch(() => {});
+
                     const productEntries = Object.values(Products);
                     const menus = [];
 
@@ -372,7 +378,7 @@ module.exports = {
 
                     const rowButton = new ActionRowBuilder().addComponents(button);
 
-                    await interaction.update({
+                    await interaction.editReply({
                         content: `${interaction.user}, selecione uma **variante** para editar.`,
                         embeds: [],
                         components: [...menus, rowButton]
