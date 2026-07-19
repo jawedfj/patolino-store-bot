@@ -290,7 +290,27 @@
             },
             "coupons": [],
             "announce_info": [],
-            "sub_products": {}
+            "sub_products": {
+                "W3SxXtU1pI0UQICN": {
+                    "stock": [
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto",
+                        "Abra um ticket para resgatar seu produto"
+                    ]
+                }
+            }
         }
     }
 }
