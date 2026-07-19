@@ -148,17 +148,16 @@ module.exports = {
                     break;
                 }
                 case "manageProduct": {
+                    await interaction.deferUpdate().catch(() => {});
                     const Products = await Produtos.get(`Products`) || {};
 
                     if (Object.keys(Products).length === 0) {
-                        return interaction.reply({ content: `Não existem produtos para configurar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
+                        return interaction.editReply({ content: `Não existem produtos para configurar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
                     }
 
                     if (Object.keys(Products).length === 1) {
                         return await ProductSetup(client, interaction, Object.keys(Products)[0]);
                     }
-
-                    await interaction.deferUpdate().catch(() => {});
 
                     const productEntries = Object.values(Products);
                     const menus = [];
@@ -201,13 +200,12 @@ module.exports = {
                 }
                 case "deleteProduct": {
 
+                    await interaction.deferUpdate().catch(() => {});
                     const Products = await Produtos.get(`Products`) || {};
 
                     if (Object.keys(Products).length === 0) {
-                        return interaction.reply({ content: `Não existem produtos para deletar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
+                        return interaction.editReply({ content: `Não existem produtos para deletar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
                     }
-
-                    await interaction.deferUpdate().catch(() => {});
 
                     const productEntries = Object.values(Products);
                     const menus = [];
@@ -330,17 +328,16 @@ module.exports = {
                     break;
                 }
                 case "manageSubproduct": {
+                    await interaction.deferUpdate().catch(() => {});
                     const Products = await Produtos.get(`Products.${productID}.sub_products`) || {};
 
                     if (Object.keys(Products).length === 0) {
-                        return interaction.reply({ content: `Não existem variantes para configurar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
+                        return interaction.editReply({ content: `Não existem variantes para configurar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
                     }
 
                     if (Object.keys(Products).length === 1) {
                         return await VariantSetup(client, interaction, productID, Object.keys(Products)[0]);
                     }
-
-                    await interaction.deferUpdate().catch(() => {});
 
                     const productEntries = Object.values(Products);
                     const menus = [];
