@@ -277,6 +277,20 @@
                     ]
                 }
             }
+        },
+        "7336sMQ9r2s3MC6B": {
+            "id_product": "7336sMQ9r2s3MC6B",
+            "title": "EXTERNAL ROBLOX",
+            "description": "Aimbot\n• Aimbot\n• Tamanho do FOV\n• Hitbox Alvo\n• Verificar Time\n• Verificar Parede\n• Verificar KO\n• Suavização\n• Predição\n\nSilent Aim\n• Silent Aim\n• Silent FOV\n\nESP\n• Caixa\n• Caixa Preenchida\n• Nome\n• Distância\n• Ferramenta\n• Barra de Vida\n• Linhas\n• Esqueleto\n• Chams\n• Mira\n• Névoa\n• Filtro de Jogador\n\nChams\n• Chams\n\nExploits\n• Pular Sem Cooldown\n• Expandir Hitbox\n\nMovimento\n• Velocidade\n• Pulo Alto\n• No Clip\n\nAparência\n• Sem Cabeça\n• Korblox\n• Trocar Emote\n• Trocar Animação\n• Trocar Skin\n\nOutros\n• Lista de Jogadores\n• Salvar / Carregar Config\n• Marca d'Água",
+            "bannerURL": "https://cdn.discordapp.com/attachments/1501359516950728735/1528480682806874254/image.png?ex=6a5e7410&is=6a5d2290&hm=fef09062e59f24bf39868e74a19bf39abc2c940b5435951de0e227a966ab2ce3&",
+            "iconURL": "",
+            "configs": {
+                "vendidos": true,
+                "embed": true
+            },
+            "coupons": [],
+            "announce_info": [],
+            "sub_products": {}
         }
     }
 }
