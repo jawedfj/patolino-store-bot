@@ -3,8 +3,13 @@ require("./Functions/safe-components");
 const config = require("./config")
 
 const express = require("express");
+const path = require("node:path");
 const app = express();
+const transcriptsDir = path.join(__dirname, "transcripts");
 app.get("/", (req, res) => res.send("Bot online."));
+app.get("/transcripts/:file", (req, res) => {
+    res.sendFile(path.join(transcriptsDir, req.params.file));
+});
 app.listen(process.env.PORT || 3000, () => {
     console.log(`[HTTP] Servidor web rodando na porta ${process.env.PORT || 3000}`);
 });

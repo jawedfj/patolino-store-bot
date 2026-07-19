@@ -8,6 +8,17 @@ const dbConfigs = new JsonDatabase({ databasePath: "./databases/dbConfigs.json" 
 const { createTranscript } = require('discord-html-transcripts');
 const { getCache, checkOwner } = require("../../../Functions/connect_api");
 const dbRankingTicket = new JsonDatabase({ databasePath: "./databases/dbRankingTicket.json" })
+const fs = require("node:fs");
+const path = require("node:path");
+
+const BASE_URL = process.env.RENDER_EXTERNAL_URL || process.env.RENDER_URL || `https://${process.env.RENDER_SERVICE_NAME || "patolino-store-bot"}.onrender.com`;
+
+async function saveTranscript(transcriptAttachment) {
+    const fileName = `${Date.now()}-${transcriptAttachment.name}`;
+    const filePath = path.join(__dirname, "..", "..", "..", "transcripts", fileName);
+    fs.writeFileSync(filePath, transcriptAttachment.attachment);
+    return `${BASE_URL}/transcripts/${fileName}`;
+}
 
 module.exports = {
     name: 'interactionCreate',
@@ -871,6 +882,11 @@ module.exports = {
 
             const msg = await logs.send({ files: [file] })
 
+            let transcriptUrl = msg.url;
+            try {
+                transcriptUrl = await saveTranscript(file);
+            } catch (e) { console.error("[TRANSCRIPT] Erro ao salvar:", e.message); }
+
             if (logs) {
                 logs.send({
                     embeds: [
@@ -891,7 +907,7 @@ module.exports = {
                                 `<t:${Math.floor(new Date() / 1000)}:f> (<t:${~~(new Date() / 1000)}:R>)`
                             ].join('\n'))
                             .addFields(
-                                { name: `Baixe as logs para verificar o que foi feito.`, value: `[CLIQUE AQUI](${msg.url}) para ir para o transcript desse ticket.` }
+                                { name: `Baixe as logs para verificar o que foi feito.`, value: `[CLIQUE AQUI](${transcriptUrl}) para ver o transcript desse ticket.` }
                             )
                     ],
                 })
@@ -1092,6 +1108,11 @@ module.exports = {
 
             const msg = await logs.send({ files: [file] })
 
+            let transcriptUrl = msg.url;
+            try {
+                transcriptUrl = await saveTranscript(file);
+            } catch (e) { console.error("[TRANSCRIPT] Erro ao salvar:", e.message); }
+
             if (logs) {
                 logs.send({
                     embeds: [
@@ -1114,7 +1135,7 @@ module.exports = {
                                 `<t:${Math.floor(new Date() / 1000)}:f> (<t:${~~(new Date() / 1000)}:R>)`
                             ].join('\n'))
                             .addFields(
-                                { name: `Baixe as logs para verificar o que foi feito.`, value: `[CLIQUE AQUI](${msg.url}) para ir para o transcript desse ticket.` }
+                                { name: `Baixe as logs para verificar o que foi feito.`, value: `[CLIQUE AQUI](${transcriptUrl}) para ver o transcript desse ticket.` }
                             )
                     ]
                 })
