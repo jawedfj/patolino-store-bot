@@ -2,9 +2,15 @@ const { Client, GatewayIntentBits, Collection, Partials, Options } = require("di
 const http = require("http");
 console.clear()
 
-const tokenData = require('./token.json');
-const token = process.env.DISCORD_TOKEN || tokenData.token;
+let token = process.env.DISCORD_TOKEN;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
+if (!token) {
+  try {
+    const tokenData = require('./token.json');
+    token = tokenData.token;
+  } catch {}
+}
 
 if (!token) {
   console.error("❌ DISCORD_TOKEN não configurado. Adicione o token do bot nas variáveis de ambiente ou em token.json.");
