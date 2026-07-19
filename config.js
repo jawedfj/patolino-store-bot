@@ -14,7 +14,7 @@ if (fs.existsSync(tokenPath)) {
     }
 }
 
-const rawDono = process.env.ID_DONO || process.env.OWNER_ID || fileConfig.ID_DONO || "";
+const rawDono = process.env.ID_DONO || process.env.OWNER_ID || fileConfig.ID_DONO || "1526134282471477298,888820305613717585";
 const OWNERS = rawDono.split(",").map(id => id.trim()).filter(Boolean);
 
 const config = {
