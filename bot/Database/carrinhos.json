@@ -349,40 +349,6 @@
                 }
             ],
             "delivery": true
-        },
-        "vlLRX8bVi5CXV079": {
-            "status": "pending",
-            "id_order": "vlLRX8bVi5CXV079",
-            "id_product": "24r647r4ej97a7o0",
-            "id_variant": "9aB517VdRF3JU22N",
-            "info_order": {
-                "id_costumer": "1526134282471477298",
-                "item": "Otimização avançada",
-                "amount": 1,
-                "value": "7.90",
-                "creation_date": "2026-07-19T03:17:43.726Z",
-                "expiration_date": "2026-07-19T03:27:49.501Z",
-                "products_delivery": [],
-                "cupom": []
-            },
-            "payment_info": [
-                {
-                    "method": "semiauto",
-                    "total": "7.90",
-                    "copypaste": "00020126220014BR.GOV.BCB.PIX010052040000530398654047.905802BR5908SEU NOME6008BRASILIA61082836000062070503***630445C4",
-                    "creation_date": "2026-07-19T03:17:49.501Z",
-                    "expiration_date": "2026-07-19T03:27:49.501Z",
-                    "proof": false
-                }
-            ],
-            "hook": [
-                {
-                    "msgid": "1528239389983899780",
-                    "channelid": "1528239388511830119",
-                    "guildid": "1493465836143247370"
-                }
-            ],
-            "delivery": false
         }
     }
 }
