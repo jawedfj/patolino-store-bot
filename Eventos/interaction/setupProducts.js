@@ -158,30 +158,31 @@ module.exports = {
                     try {
                         const Products = await Produtos.get(`Products`) || {};
 
-                        if (Object.keys(Products).length === 0) {
+                        const validEntries = Object.entries(Products).filter(([key, prod]) => prod && prod.id_product);
+
+                        if (validEntries.length === 0) {
                             return interaction.editReply({ content: `Não existem produtos para configurar.`, components: [], embeds: [] });
                         }
 
-                        if (Object.keys(Products).length === 1) {
-                            return await ProductSetup(client, interaction, Object.keys(Products)[0]);
+                        if (validEntries.length === 1) {
+                            return await ProductSetup(client, interaction, validEntries[0][1].id_product);
                         }
 
-                        const productEntries = Object.values(Products);
                         const menus = [];
 
-                        for (let i = 0; i < productEntries.length; i += 25) {
-                            const productBatch = productEntries.slice(i, i + 25);
+                        for (let i = 0; i < validEntries.length; i += 25) {
+                            const productBatch = validEntries.slice(i, i + 25);
                             const selectMenu = new StringSelectMenuBuilder()
                                 .setCustomId(`manageProductSelect_${i / 25}`)
-                                .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
+                                .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, validEntries.length)}]`)
                                 .setMaxValues(1);
 
-                            productBatch.forEach(prod => {
+                            productBatch.forEach(([key, prod]) => {
 
                                 selectMenu.addOptions({
                                     label: prod.title?.substring(0, 100) || "Sem título",
-                                    description: `Variantes: ${Object.keys(prod.sub_products).length}` || "Sem descrição",
-                                    value: prod.id_product.toString(),
+                                    description: `Variantes: ${Object.keys(prod.sub_products || {}).length}` || "Sem descrição",
+                                    value: prod.id_product,
                                     emoji: '1342771110625808465'
                                 });
                             });
@@ -203,7 +204,7 @@ module.exports = {
                             components: [...menus, rowButton]
                         });
                     } catch (e) {
-                        console.error('[manageProduct] Erro:', e.message);
+                        console.error('[manageProduct] Erro:', e.message, e.stack);
                         try {
                             await interaction.editReply({ content: `Ocorreu um erro ao carregar os produtos. Tente novamente.`, components: [], embeds: [] });
                         } catch {}
@@ -222,26 +223,27 @@ module.exports = {
                     try {
                         const Products = await Produtos.get(`Products`) || {};
 
-                        if (Object.keys(Products).length === 0) {
+                        const validEntries = Object.entries(Products).filter(([key, prod]) => prod && prod.id_product);
+
+                        if (validEntries.length === 0) {
                             return interaction.editReply({ content: `Não existem produtos para deletar.`, components: [], embeds: [] });
                         }
 
-                        const productEntries = Object.values(Products);
                         const menus = [];
 
-                        for (let i = 0; i < productEntries.length; i += 25) {
-                            const productBatch = productEntries.slice(i, i + 25);
+                        for (let i = 0; i < validEntries.length; i += 25) {
+                            const productBatch = validEntries.slice(i, i + 25);
                             const selectMenu = new StringSelectMenuBuilder()
                                 .setCustomId(`deleteProductSelect`)
-                                .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, productEntries.length)}]`)
+                                .setPlaceholder(`Selecione um Produto [${i + 1}-${Math.min(i + 25, validEntries.length)}]`)
                                 .setMaxValues(productBatch.length);
 
-                            productBatch.forEach(prod => {
+                            productBatch.forEach(([key, prod]) => {
 
                                 selectMenu.addOptions({
                                     label: prod.title?.substring(0, 100) || "Sem título",
-                                    description: `Variantes: ${Object.keys(prod.sub_products).length}` || "Sem descrição",
-                                    value: prod.id_product.toString(),
+                                    description: `Variantes: ${Object.keys(prod.sub_products || {}).length}` || "Sem descrição",
+                                    value: prod.id_product,
                                     emoji: '1344203167700750418'
                                 });
 
@@ -264,7 +266,7 @@ module.exports = {
                             components: [...menus, rowButton]
                         });
                     } catch (e) {
-                        console.error('[deleteProduct] Erro:', e.message);
+                        console.error('[deleteProduct] Erro:', e.message, e.stack);
                         try {
                             await interaction.editReply({ content: `Ocorreu um erro ao carregar os produtos. Tente novamente.`, components: [], embeds: [] });
                         } catch {}
