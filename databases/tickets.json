@@ -1,4 +1,56 @@
 {
+    "1": {
+        "idpainel": "1",
+        "tipo": "button",
+        "desc": "Clique no botão de abrir ticket para obter ajuda de um **STAFF**",
+        "title": "PATOLINO CHEATS | Suporte",
+        "idmsg": "1528536741345235088",
+        "idcanal": "1508723839540924496",
+        "modal": {
+            "assunto": "ON",
+            "desc": "OFF",
+            "finaliza": "ON"
+        },
+        "buttons": [
+            {
+                "id": 1,
+                "style": 1,
+                "text": "Abrir Ticket",
+                "emoji": "🎫",
+                "msg": {
+                    "mensagem": "",
+                    "sistema": "ON"
+                }
+            }
+        ]
+    },
+    "3": {
+        "idpainel": "3",
+        "tipo": "select",
+        "desc": "Clique na seleção abaixo para abrir ticket e obter ajuda de um **STAFF**",
+        "title": "PATOLINO CHEATS | Atendimento",
+        "placeholder": "Selecione uma opção...",
+        "select": [
+            {
+                "text": "Abrir Ticket",
+                "desc": "Clique aqui para abrir",
+                "emoji": "⚡",
+                "categoria": "",
+                "id": 1,
+                "msg": {
+                    "mensagem": "",
+                    "sistema": "ON"
+                }
+            }
+        ],
+        "idmsg": "1528536911067484353",
+        "idcanal": "1508723839540924496",
+        "modal": {
+            "assunto": "ON",
+            "desc": "OFF",
+            "finaliza": "ON"
+        }
+    },
     "teste": {
         "idpainel": "teste",
         "tipo": "button",
