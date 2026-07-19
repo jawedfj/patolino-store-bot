@@ -148,10 +148,11 @@ module.exports = {
                     break;
                 }
                 case "manageProduct": {
+                    await interaction.deferUpdate().catch(() => {});
                     const Products = await Produtos.get(`Products`) || {};
 
                     if (Object.keys(Products).length === 0) {
-                        return interaction.reply({ content: `Não existem produtos para configurar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
+                        return interaction.editReply({ content: `Não existem produtos para configurar.`, components: [], embeds: [] });
                     }
 
                     if (Object.keys(Products).length === 1) {
@@ -189,7 +190,7 @@ module.exports = {
 
                     const rowButton = new ActionRowBuilder().addComponents(button);
 
-                    await interaction.update({
+                    await interaction.editReply({
                         content: `${interaction.user}, selecione um **produto** para editar.`,
                         embeds: [],
                         components: [...menus, rowButton]
@@ -199,10 +200,11 @@ module.exports = {
                 }
                 case "deleteProduct": {
 
+                    await interaction.deferUpdate().catch(() => {});
                     const Products = await Produtos.get(`Products`) || {};
 
                     if (Object.keys(Products).length === 0) {
-                        return interaction.reply({ content: `Não existem produtos para deletar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
+                        return interaction.editReply({ content: `Não existem produtos para deletar.`, components: [], embeds: [] });
                     }
 
                     const productEntries = Object.values(Products);
@@ -237,7 +239,7 @@ module.exports = {
 
                     const rowButton = new ActionRowBuilder().addComponents(button);
 
-                    await interaction.update({
+                    await interaction.editReply({
                         content: `${interaction.user}, selecione o produto para deletar.`,
                         embeds: [],
                         components: [...menus, rowButton]
@@ -326,10 +328,11 @@ module.exports = {
                     break;
                 }
                 case "manageSubproduct": {
+                    await interaction.deferUpdate().catch(() => {});
                     const Products = await Produtos.get(`Products.${productID}.sub_products`) || {};
 
                     if (Object.keys(Products).length === 0) {
-                        return interaction.reply({ content: `Não existem variantes para configurar.`, flags: MessageFlagsBitField.Flags.Ephemeral });
+                        return interaction.editReply({ content: `Não existem variantes para configurar.`, components: [], embeds: [] });
                     }
 
                     if (Object.keys(Products).length === 1) {
@@ -372,7 +375,7 @@ module.exports = {
 
                     const rowButton = new ActionRowBuilder().addComponents(button);
 
-                    await interaction.update({
+                    await interaction.editReply({
                         content: `${interaction.user}, selecione uma **variante** para editar.`,
                         embeds: [],
                         components: [...menus, rowButton]

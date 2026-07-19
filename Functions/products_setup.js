@@ -32,7 +32,7 @@ async function ProductSetup(client, interaction, productID) {
 
     const row = new ActionRowBuilder().addComponents(selectMenu);
 
-    interaction.update({
+    const payload = {
         content: ``,
         embeds: [embed],
         components: [
@@ -89,7 +89,13 @@ async function ProductSetup(client, interaction, productID) {
                         .setEmoji('1251441490576805979')
                 ),
         ],
-    });
+    };
+
+    if (interaction.deferred || interaction.replied) {
+        await interaction.editReply(payload);
+    } else {
+        await interaction.update(payload);
+    }
 }
 
 async function VariantSetup(client, interaction, productID, VariantID) {
@@ -125,7 +131,7 @@ async function VariantSetup(client, interaction, productID, VariantID) {
 
     const row = new ActionRowBuilder().addComponents(selectMenu);
 
-    interaction.update({
+    const payload = {
         content: ``,
         embeds: [embed],
         components: [
@@ -170,8 +176,13 @@ async function VariantSetup(client, interaction, productID, VariantID) {
                         .setEmoji('1251441490576805979')
                 ),
         ],
-        flags: MessageFlagsBitField.Flags.Ephemeral
-    });
+    };
+
+    if (interaction.deferred || interaction.replied) {
+        await interaction.editReply(payload);
+    } else {
+        await interaction.update(payload);
+    }
 }
 
 async function CouponSetup(client, interaction, productID) {
