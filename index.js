@@ -284,8 +284,11 @@ process.on('uncaughtExceptionMonitor', (error, origin) => {
 
 async function startBot() {
     try {
+        const { loadFromGitHub, startSync } = require("./databases/github_sync");
+        await loadFromGitHub();
         config.validateConfig();
         await client.login(config.token);
+        startSync(120000);
     } catch (error) {
         const message = error?.message || String(error);
 
