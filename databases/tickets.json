@@ -28,7 +28,7 @@
         "idpainel": "Suporte",
         "tipo": "select",
         "desc": "Clique na seleção abaixo para abrir ticket e obter ajuda de um **STAFF**",
-        "title": "West Vazamentos | #200 🤍 | Atendimento",
+        "title": "patolino cheats | #200 💛  | Atendimento",
         "placeholder": "Selecione uma opção...",
         "select": [
             {
@@ -41,10 +41,20 @@
                     "mensagem": "",
                     "sistema": "ON"
                 }
+            },
+            {
+                "text": "Abrir Ticket",
+                "desc": "Clique aqui para abrir",
+                "emoji": "⚡",
+                "id": 2,
+                "msg": {
+                    "mensagem": "",
+                    "sistema": "ON"
+                }
             }
         ],
-        "idmsg": "1506393534025175292",
-        "idcanal": "1503176047745699940",
+        "idmsg": "1528532703551422518",
+        "idcanal": "1508723839604097144",
         "modal": {
             "assunto": "ON",
             "desc": "OFF",
