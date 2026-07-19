@@ -124,7 +124,7 @@
         "placeholder": "Selecione uma opção...",
         "select": [
             {
-                "text": "Abrir Ticket",
+                "text": "📩 Suporte Geral",
                 "desc": "Clique aqui para abrir",
                 "emoji": "⚡",
                 "categoria": "",
