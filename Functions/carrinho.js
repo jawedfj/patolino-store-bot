@@ -298,6 +298,11 @@ async function processOrder(client) {
 
             let response = { status: '', data: {} };
 
+            if (!data.hook || !Array.isArray(data.hook) || data.hook.length === 0) {
+                console.log(`[processOrder] Pedido ${data.id_order} sem dados de hook - pulando.`);
+                continue;
+            }
+
             // Skip expensive API fetch for open orders that haven't expired yet
             if (data.status === 'open') {
                 const agora = new Date();
@@ -513,6 +518,11 @@ async function approveOrder(client) {
 
             if (data.status !== 'approved') continue;
             if (data.delivery == true) continue;
+
+            if (!data.hook || !Array.isArray(data.hook) || data.hook.length === 0) {
+                console.log(`[approveOrder] Pedido ${data.id_order} sem dados de hook - pulando.`);
+                continue;
+            }
 
             let err = {
                 state: false,
