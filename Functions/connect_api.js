@@ -35,7 +35,7 @@ function getCache(userId, key) {
    
     const fakeData = {
         owner: MEU_ID,
-        type: "premium",
+        type: { Ticket: { status: true }, Vendas: { status: true } },
         users: [MEU_ID],
         additional: ["status", "description"] 
     };
